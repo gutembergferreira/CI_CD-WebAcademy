@@ -24,7 +24,7 @@ jobs:
         working-directory: ./Lab03
 
       - name: Upload coverage reports to Codecov
-        working-directory: ./Lab03
         uses: codecov/codecov-action@v3
-        env:
-          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+        working-directory: ./Lab03
