@@ -65,7 +65,7 @@ jobs:
         run: gcloud auth configure-docker --quiet
 
       - name: Build Docker image
-        run: docker build -t $IMAGE_NAME -f Lab04/Dockerfile .
+        run: docker build -t $IMAGE_NAME -f Dockerfile .
         working-directory: ./Lab04
 
       - name: Push Docker image
