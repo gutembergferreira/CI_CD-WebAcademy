@@ -2,7 +2,7 @@ name: Build on DockerHub
 on:
   push:
     branches:
-      - main  # Ajuste de acordo com a branch em que deseja acionar o workflow
+      - main
 
 env:
   DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
