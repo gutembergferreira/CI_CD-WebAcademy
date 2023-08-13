@@ -28,12 +28,13 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: Build and push Docker image
+        run: cd Lab03/docker_image
         uses: docker/build-push-action@v2
         with:
           context: ./
           push: true
           dockerfile: Dockerfile  # Verifique o nome do Dockerfile correto
-          tags: moisesgc/webacademy:latest
+          tags: gutembergferreira/webacademy:latest
 
   deploy:
     runs-on: ubuntu-latest
