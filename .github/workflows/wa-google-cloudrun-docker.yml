@@ -9,7 +9,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: install Lint
-        id: lint-step
+        id: lint-install
         run: npm install eslint --save-dev
         working-directory: ./Lab04
       
