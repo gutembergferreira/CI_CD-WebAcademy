@@ -1,14 +1,26 @@
 name: Simple Local
 on: push
 jobs:
-   build-node:
-       runs-on: ubuntu-latest
-       container: node:18
-       steps:
-           - run: node --version
-           - run: npm --version
-           - uses: actions/checkout@v3
-           - run: cd Lab02
-           - run: npm install
-           - run: npm install --save moment
-           - run: node app.js
+  build-node:
+    runs-on: ubuntu-latest
+    container: node:18
+    steps:
+      - name: Check Node.js and npm versions
+        run: |
+          node --version
+          npm --version
+
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Install npm dependencies
+        run: npm install
+        working-directory: ./Lab02
+
+      - name: Install moment package
+        run: npm install --save moment
+        working-directory: ./Lab02
+
+      - name: Run app.js
+        run: node app.js
+        working-directory: ./Lab02
