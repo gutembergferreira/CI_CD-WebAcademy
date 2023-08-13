@@ -65,11 +65,11 @@ jobs:
         run: gcloud auth configure-docker --quiet
 
       - name: Build Docker image
-        run: echo "OK"
+        run: docker build -t $IMAGE_NAME -f Dockerfile .
         working-directory: ./Lab04
 
       - name: Push Docker image
         run: echo "OK"
 
       - name: Deploy Docker image
-        run: echo "OK"
+        run: gcloud run deploy wacicd --image $IMAGE_NAME --region us-west1 --memory 128Mi --min-instances 0 --max-instances 1 --platform managed --port 8080 --allow-unauthenticated
