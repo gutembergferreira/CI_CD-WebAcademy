@@ -1,0 +1,51 @@
+name: Build V2
+on: push
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get code
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.before }}
+      - name: Install dependencies
+        run: npm ci
+        working-directory: ./Lab02
+      - name: Lint
+        run: npm run lint
+        working-directory: ./Lab02
+
+  test:
+    needs: lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get code
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.before }}
+      - name: Install dependencies
+        run: npm ci
+        working-directory: ./Lab02
+      - name: Test code
+        run: npm run test
+        working-directory: ./Lab02
+
+  deploy:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get code
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.before }}
+      - name: Install dependencies
+        run: npm ci
+        working-directory: ./Lab02
+      - name: Build code
+        run: npm run build
+        working-directory: ./Lab02
+      - name: Deploy code
+        run: echo "Deploying..."
+
+
+
