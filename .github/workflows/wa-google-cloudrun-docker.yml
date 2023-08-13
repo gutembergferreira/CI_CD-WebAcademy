@@ -36,9 +36,9 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       - name: Build and push Docker image
-        run: docker build -t moisesgc/webacademy:latest ./Lab04
+        run: docker build -t gutembergferreira/webacademy:latest ./Lab04
       - name: Push Docker image
-        run: docker push moisesgc/webacademy:latest
+        run: docker push gutembergferreira/webacademy:latest
   deploy:
     needs: lint
     name: Setup Gcloud Account
